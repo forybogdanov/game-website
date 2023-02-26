@@ -1,4 +1,4 @@
-using GameWebsite.Data;
+using GameWebsite.App.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

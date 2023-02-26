@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GameWebsite.Controllers
+namespace GameWebsite.App.Controllers
 {
     public class HomeController : Controller
     {

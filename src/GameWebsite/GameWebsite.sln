@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F800B1B8-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{CF7246CA-DEB3-45A7-99FC-7E179472523B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameWebsite", "Web\GameWebsite.csproj", "{4AC01C6A-2646-4529-BFC0-37DD61F7A943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameWebsite.Web", "Web\GameWebsite.Web.csproj", "{4AC01C6A-2646-4529-BFC0-37DD61F7A943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "chpCAwtmmYKCWMqeqbofpPrF+jQC+HXhVdkq4AQHqsf4nox47iJeWaZ5KwPYFcasiRCM7NLVYogl5NKG6fyi5g==",
+  "dgSpecHash": "cuVgEKAc4cyaDN2wyjdf939jXcJZHMQU6N0D6UPDl259mmz4U88rdRoCj2Z5kXvqFDcCWSJOPzUkOLq96EWCeg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\GameWebsite\\GameWebsite.csproj",
+  "projectFilePath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\src\\GameWebsite\\Web\\GameWebsite.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nolimit-2\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nolimit-2\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

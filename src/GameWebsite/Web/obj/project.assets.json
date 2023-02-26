@@ -10203,11 +10203,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\GameWebsite\\GameWebsite.csproj",
-      "projectName": "GameWebsite",
-      "projectPath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\GameWebsite\\GameWebsite.csproj",
+      "projectUniqueName": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\src\\GameWebsite\\Web\\GameWebsite.Web.csproj",
+      "projectName": "GameWebsite.Web",
+      "projectPath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\src\\GameWebsite\\Web\\GameWebsite.Web.csproj",
       "packagesPath": "C:\\Users\\nolimit-2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\GameWebsite\\obj\\",
+      "outputPath": "C:\\Users\\nolimit-2\\source\\repos\\GameWebsite\\src\\GameWebsite\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nolimit-2\\AppData\\Roaming\\NuGet\\NuGet.Config",
