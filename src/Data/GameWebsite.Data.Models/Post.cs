@@ -5,7 +5,8 @@ namespace GameWebsite.Data.Models
     {
         public string Name { get; set; }
         public string Content { get; set; }
-        public long CategoryId { get; set; }
         public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<Attachment> Attachments { get; set; }
     }
 }

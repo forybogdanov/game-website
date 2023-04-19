@@ -2,7 +2,7 @@
 
 namespace GameWebsite.Data.Models
 {
-    internal class GameWebsiteUser : IdentityUser
+    public class GameWebsiteUser : IdentityUser
     {
     }
 }
