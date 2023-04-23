@@ -1,6 +1,10 @@
+using GameWebsite.Web.Seed;
 using GameWebsite.Data;
+using GameWebsite.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using GameWebsite.Services.Categories;
+using GameWebsite.Services.Posts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +12,22 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<GameWebsiteDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IPostService, PostService>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<GameWebsiteUser>(options => {
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+
+}).AddRoles<IdentityRole>()  
     .AddEntityFrameworkStores<GameWebsiteDbContext>();
 builder.Services.AddRazorPages();
 
@@ -28,6 +45,8 @@ else
     app.UseHsts();
 }
 
+/*app.SeedRoles();*/
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -44,6 +63,10 @@ app.UseEndpoints(endpoints =>
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
 
+    endpoints.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+          );
 });
 
 app.Run();

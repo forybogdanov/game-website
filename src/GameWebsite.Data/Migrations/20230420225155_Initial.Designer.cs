@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameWebsite.Data.Migrations
 {
     [DbContext(typeof(GameWebsiteDbContext))]
-    [Migration("20230419124724_Initial")]
+    [Migration("20230420225155_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,10 +38,7 @@ namespace GameWebsite.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreatedById1")
+                    b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FileName")
@@ -59,7 +56,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasIndex("CommentId");
 
-                    b.HasIndex("CreatedById1");
+                    b.HasIndex("CreatedById");
 
                     b.HasIndex("PostId");
 
@@ -77,10 +74,7 @@ namespace GameWebsite.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreatedById1")
+                    b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
@@ -93,7 +87,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById1");
+                    b.HasIndex("CreatedById");
 
                     b.ToTable("Categories");
                 });
@@ -113,10 +107,7 @@ namespace GameWebsite.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreatedById1")
+                    b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<long>("PostId")
@@ -124,7 +115,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById1");
+                    b.HasIndex("CreatedById");
 
                     b.HasIndex("PostId");
 
@@ -214,10 +205,7 @@ namespace GameWebsite.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedById")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreatedById1")
+                    b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
@@ -228,7 +216,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CreatedById1");
+                    b.HasIndex("CreatedById");
 
                     b.ToTable("Posts");
                 });
@@ -313,10 +301,12 @@ namespace GameWebsite.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -353,10 +343,12 @@ namespace GameWebsite.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -374,7 +366,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasOne("GameWebsite.Data.Models.GameWebsiteUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById1");
+                        .HasForeignKey("CreatedById");
 
                     b.HasOne("GameWebsite.Data.Models.Post", null)
                         .WithMany("Attachments")
@@ -387,7 +379,7 @@ namespace GameWebsite.Data.Migrations
                 {
                     b.HasOne("GameWebsite.Data.Models.GameWebsiteUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById1");
+                        .HasForeignKey("CreatedById");
 
                     b.Navigation("CreatedBy");
                 });
@@ -396,7 +388,7 @@ namespace GameWebsite.Data.Migrations
                 {
                     b.HasOne("GameWebsite.Data.Models.GameWebsiteUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById1");
+                        .HasForeignKey("CreatedById");
 
                     b.HasOne("GameWebsite.Data.Models.Post", "Post")
                         .WithMany("Comments")
@@ -419,7 +411,7 @@ namespace GameWebsite.Data.Migrations
 
                     b.HasOne("GameWebsite.Data.Models.GameWebsiteUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById1");
+                        .HasForeignKey("CreatedById");
 
                     b.Navigation("Category");
 

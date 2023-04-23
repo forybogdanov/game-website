@@ -11,6 +11,10 @@ namespace GameWebsite.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+        public GameWebsiteDbContext(DbContextOptions<GameWebsiteDbContext> options)
+        : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

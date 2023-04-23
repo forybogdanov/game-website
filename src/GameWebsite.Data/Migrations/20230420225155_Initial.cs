@@ -94,8 +94,8 @@ namespace GameWebsite.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -139,8 +139,8 @@ namespace GameWebsite.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -162,16 +162,15 @@ namespace GameWebsite.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedById1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedById = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Categories_AspNetUsers_CreatedById1",
-                        column: x => x.CreatedById1,
+                        name: "FK_Categories_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -185,16 +184,15 @@ namespace GameWebsite.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<long>(type: "bigint", nullable: false),
-                    CreatedById1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedById = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_AspNetUsers_CreatedById1",
-                        column: x => x.CreatedById1,
+                        name: "FK_Posts_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -213,16 +211,15 @@ namespace GameWebsite.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostId = table.Column<long>(type: "bigint", nullable: false),
-                    CreatedById1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedById = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_AspNetUsers_CreatedById1",
-                        column: x => x.CreatedById1,
+                        name: "FK_Comments_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -243,16 +240,15 @@ namespace GameWebsite.Data.Migrations
                     FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CommentId = table.Column<long>(type: "bigint", nullable: true),
                     PostId = table.Column<long>(type: "bigint", nullable: true),
-                    CreatedById1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedById = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Attachments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Attachments_AspNetUsers_CreatedById1",
-                        column: x => x.CreatedById1,
+                        name: "FK_Attachments_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -312,9 +308,9 @@ namespace GameWebsite.Data.Migrations
                 column: "CommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attachments_CreatedById1",
+                name: "IX_Attachments_CreatedById",
                 table: "Attachments",
-                column: "CreatedById1");
+                column: "CreatedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Attachments_PostId",
@@ -322,14 +318,14 @@ namespace GameWebsite.Data.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_CreatedById1",
+                name: "IX_Categories_CreatedById",
                 table: "Categories",
-                column: "CreatedById1");
+                column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_CreatedById1",
+                name: "IX_Comments_CreatedById",
                 table: "Comments",
-                column: "CreatedById1");
+                column: "CreatedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
@@ -342,9 +338,9 @@ namespace GameWebsite.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_CreatedById1",
+                name: "IX_Posts_CreatedById",
                 table: "Posts",
-                column: "CreatedById1");
+                column: "CreatedById");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
